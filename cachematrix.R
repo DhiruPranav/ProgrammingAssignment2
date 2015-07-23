@@ -5,9 +5,9 @@ makeCacheMatrix <- function(x = numeric()) {
         m <- NULL
         mInverse <- NULL
         setMat <- function(y) {
-                m <<-y
+                m <<-x
                 mInverse <<- NULL
-                x <<- y
+                x <<- x
                 #setting the matrix in to cache.
        
         }
@@ -29,10 +29,10 @@ makeCacheMatrix <- function(x = numeric()) {
                 
                 #Calculate inverse first check whether the matrix got initialized or not.
                 #if the matrix exists then it will calculate the inverse using solve method and cache the outout for next call.
-                
-                if (!is.null(m))
+                x<<-getMat()
+                if (!is.null(x))
                 {
-                        inv <<- solve(m)
+                        inv <<- solve(x)
                         cacheMatrixInverse(inv)
                         inv
                 }
